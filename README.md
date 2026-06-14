@@ -1,9 +1,33 @@
-# Basic 3d renderer
+# 3D Motor - Basic 3D Renderer
 
-Build with pygame
+A lightweight 3D renderer built with Pygame, demonstrating 3D graphics rendering in Python.
 
+## Features
 
-<video width="640" height="360" controls>
-  <source src="video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+- Real-time 3D rendering
+- [Add your key features here]
+
+## Installation
+
+### Prerequisites
+- Python 3.x
+- pygame
+
+### Setup
+
+```bash
+pip install pygame
+python main.py  # or whatever your entry point is
+```
+
+## Usage
+
+[Add usage instructions and basic examples]
+
+## Demo
+
+[Watch demo video](video.mp4)
+
+## License
+
+[Add your license]
