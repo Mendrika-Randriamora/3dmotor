@@ -17,7 +17,7 @@ A lightweight 3D renderer built with Pygame, demonstrating 3D graphics rendering
 
 ```bash
 pip install pygame
-python main.py  # or whatever your entry point is
+python 3dmotor.py  # or whatever your entry point is
 ```
 
 ## Usage
