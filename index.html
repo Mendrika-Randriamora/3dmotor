@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d motor</title>
+</head>
+<body>
+    <canvas id="game"></canvas>
+    <script>
+        game.width = 800
+        game.height = 800
+
+        const ctx = game.getContext("2d")
+
+        ctx.fillStyle = "black"
+        ctx.fillRect(0, 0, game.width, game.height)
+
+        function clear() {
+            ctx.fillStyle = "black"
+            ctx.fillRect(0, 0, game.width, game.height)
+        }
+
+
+        function point({x, y}) {
+            let ct = 10;
+            ctx.fillStyle = "white"
+            ctx.fillRect(x - ct/2, y - ct/2, ct, ct)
+        }
+
+        function screen({x, y}) {
+            return {
+                x: (x + 1)/2 * game.width,
+                y: (1 - (y + 1)/2) * game.height
+            }
+        }
+
+        function project({x, y, z}) {
+            return {
+                x : x/z,
+                y: y/z
+            }
+        }
+
+        function rotate_xz({x, y, z}, angle) {
+            // x' = x cos θ − z sin θ
+            // z' = x sin θ + z cos θ
+            const s = Math.sin(angle)
+            const c = Math.cos(angle)
+
+            return {
+                x: x*c - z*s,
+                y: y,
+                z: x*s + z*c
+            }
+        }
+ 
+        const vs = [
+            {x: 0.25, y: 0.25, z: 0.25},
+            {x: 0.25, y: -0.25, z: 0.25},
+            {x: -0.25, y: -0.25, z: 0.25},
+            {x: -0.25, y: 0.25, z: 0.25},
+            
+            {x: 0.25, y: 0.25, z: -0.25},
+            {x: -0.25, y: 0.25, z: -0.25},
+            {x: -0.25, y: -0.25, z: -0.25},
+            {x: 0.25, y: -0.25, z: -0.25},
+        ]
+
+        const FPS = 60;
+        let dz = 0;
+        let angle = 0;
+        
+        function frame() {
+            
+            const dt = 1/FPS
+            dz += 1*dt
+            angle += Math.PI*dt
+            console.log(angle)
+            clear()
+
+            vs.forEach(e => {
+                point(
+                    screen(
+                        project(
+                            // rotate_xz(e, angle)
+                            e
+                        )
+                    )
+                )
+            });
+            
+
+            setTimeout(frame, 1000/FPS)
+
+        }
+
+        setTimeout(frame, 1000/FPS)
+    </script>
+
+
+
+
+    </script>
+</body>
+</html>
