@@ -27,7 +27,3 @@ python 3dmotor.py  # or whatever your entry point is
 ## Demo
 
 [Watch demo video](video.mp4)
-
-## License
-
-[Add your license]
